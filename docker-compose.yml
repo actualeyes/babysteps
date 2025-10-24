@@ -1,0 +1,29 @@
+services:
+  postgres:
+    container_name: 'babysteps-postgres'
+    image: 'postgres:latest'
+    restart: 'always'
+    shm_size:  128mb
+    build: ./postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+    - POSTGRES_PASSWORD=${PGPASSWORD}
+    ports:
+      - '5432:5432'
+  # woodsman-api:
+  #   container_name: 'woodsman-api'
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: ./woodsman-api
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./woodsman-api:/usr/src/app
+  #   environment:
+  #     - PGUSER=${PGUSER}
+  #     - PGHOST=${PGHOST}
+  #     - PGDATABASE=${PGDATABASE}
+  #     - PGPASSWORD=${PGPASSWORD}
+  #     - PGPORT=${PGPORT}
+  #   ports:
+  #     - '3030:3030'
