@@ -1,5 +1,7 @@
 import Fastify from 'fastify'
 import env from '@fastify/env'
+import dotenv from 'dotenv'
+import { createLogger, Level } from 'src/utils/logger'
 
 const schema = {
   type: 'object',
@@ -39,9 +41,17 @@ declare module 'fastify' {
   }
 }
 
+dotenv.config()
+
+const level = process.env.PINO_LOG_LEVEL as Level
+const isDev = process.env.NODE_ENV === 'development'
+const logger = createLogger({ level, isDev })
+
+export { logger }
+
 export const createServer = async () => {
   const fastify = Fastify({
-    logger: true
+    loggerInstance: logger
   })
 
   /* Register Plugins */

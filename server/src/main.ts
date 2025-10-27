@@ -2,7 +2,7 @@ import { createServer } from 'src/server'
 
 const main = async () => {
   const fastify = await createServer()
-  const port = 3000
+  const port = Number(fastify.config.PORT)
 
   try {
     fastify.listen({ port }, () => {

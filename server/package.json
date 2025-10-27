@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc -p tsconfig.json && tsc-alias",
     "start": "node ./dist/main.js",
-    "dev": "tsx watch src/main.ts"
+    "dev": "tsx watch src/main.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
   },
   "keywords": [],
   "author": "",
