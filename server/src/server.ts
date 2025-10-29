@@ -51,5 +51,9 @@ export const createServer = async () => {
     reply.send({ message: 'pong' })
   })
 
+  fastify.get('/healthcheck', (req, res) => {
+    res.send({ message: 'Success' })
+  })
+
   return fastify
 }
