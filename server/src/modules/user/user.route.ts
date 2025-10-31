@@ -1,11 +1,15 @@
 // user.route.ts
 
-import { FastifyInstance } from 'fastify'
-
-import { registerUserHandler } from './user.controller.ts'
+import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
 
 async function userRoutes(server: FastifyInstance) {
-  server.post('/', registerUserHandler)
+  server.get('/', (req: FastifyRequest, reply: FastifyReply) => {
+    reply.send({ message: '/ route hit' })
+  })
+  server.post('/register', () => {})
+  server.post('/login', () => {})
+  server.delete('/logout', () => {})
+  server.log.info('user routes registered')
 }
 
 export default userRoutes

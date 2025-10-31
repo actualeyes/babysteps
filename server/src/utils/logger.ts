@@ -1,6 +1,6 @@
 import pino, { Level } from 'pino'
 
-export { level }
+export { Level }
 
 type CreateLoggerArgs = {
   level: Level

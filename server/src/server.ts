@@ -1,5 +1,6 @@
 import Fastify from 'fastify'
 import env from '@fastify/env'
+import userRoutes from './modules/user/user.route'
 
 const schema = {
   type: 'object',
@@ -54,6 +55,9 @@ export const createServer = async () => {
   fastify.get('/healthcheck', (req, res) => {
     res.send({ message: 'Success' })
   })
+
+  // routes
+  fastify.register(userRoutes, { prefix: 'api/users' })
 
   return fastify
 }
